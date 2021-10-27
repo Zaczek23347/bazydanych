@@ -1,0 +1,59 @@
+ADERS -------- 213.184.8.36
+
+login: zaczekk
+has³o: Zaq12wsx!
+
+---------------------------------------------------------------------------------------------
+
+LINUX
+
+pdw = gdzie jestem
+cd = przejdz do katalogu	| cd ~ do katalogu domowego
+ls = wyœwietl zawartosc katalogu	|	-l = longlist   -a
+mkdir = stworz katalog
+touch = stworz plik tekstowy
+nano = edytuj plik tekstowy
+cat = wypisz zawartoœæ pliku tekstowego
+passwd = zmiana has³a
+
+
+----------------------------------------------------------------------------------------------
+
+mysql -u zaczekk -p = uruchom mysql
+
+has³o mysql: kacper123#@!A
+
+
+
+
+show databases; = poka¿ bazy danych do których mam dostêp
+
+
+use nazwa_bazydanych =  wejdz do bazy danych
+show tables;
+
+create table pracownik(id_pracownika int primary key, imie varchar(50) not null default 'Kowalski', zarobki double(10,2),data_urodzenia date, stanowisko enum('manager','ksiegowa','sprzedawca','kasjer'));  === przyk³adowy create table
+
+insert into table_name (column1, column2, column3, ...) values (value1, value2, value3, ...);
+
+create table walizka(id_walizki int primary key auto_increment, pojemnisc int not null, kolor enum('rozowy','czerwony','teczowy','zolty'), id_wlasciciela int, FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) ON DELETE CASCADE);
+
+alter table walizka
+    -> alter column kolor set default 'rozowy';
+
+insert into walizka (pojemnisc,kolor,id_wlasciciela) values (15,'czerwony',1);
+
+insert into walizka (pojemnisc,id_wlasciciela) values (30,2);
+
+create table izba(adres_budynku int auto_increment,nazwa_izby int auto_increment,
+    -> metraz int not null,
+    -> wlasciciel int,
+    -> foreign key (wlasciciel) references postac(id_postaci) on delete set null,
+    -> primary key (adres_budynku,nazwa_izby));
+
+
+
+
+
+
+
