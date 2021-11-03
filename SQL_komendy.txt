@@ -45,15 +45,63 @@ insert into walizka (pojemnisc,kolor,id_wlasciciela) values (15,'czerwony',1);
 
 insert into walizka (pojemnisc,id_wlasciciela) values (30,2);
 
-create table izba(adres_budynku int auto_increment,nazwa_izby int auto_increment,
+
+
+
+create table izba(adres_budynku int auto_increment,nazwa_izby varchar(40),
     -> metraz int not null,
     -> wlasciciel int,
     -> foreign key (wlasciciel) references postac(id_postaci) on delete set null,
     -> primary key (adres_budynku,nazwa_izby));
 
+alter table izba add collumn kolor varchar(50) default 'czarny';
+
+insert into izba (nazwa_izby,metraz, wlasciciel) values ('spizarnia',47,1);
+
+
+ 
+create table przetwory(id_przetworu int primary key auto_increment,rok_rodukcji year default 1654,id_wykonawcy int, zawartosc varchar(70),dodatek varchar(50) default 'papryczka chili',id_konsumenta int, foreign key (id_wykonawcy) references postac(id_postaci), foreign key (id_konsumenta) references postac(id_postaci));
+
+insert into przetwory(id_wykonawcy,zawartosc,id_konsumenta) values (1,'kapusta',2);
 
 
 
+insert into postac(nazwa,rodzaj,data_ur,wiek) values ('Hugin','wiking','1628.01.02',21);
+insert into postac(nazwa,rodzaj,data_ur,wiek) values ('Mugin','wiking','1629.12.11',20);
+insert into postac(nazwa,rodzaj,data_ur,wiek) values ('Ivar','wiking','1625.08.27',24);
+insert into postac(nazwa,rodzaj,data_ur,wiek) values ('Bolvar','wiking','1623.03.18',27);
+insert into postac(nazwa,rodzaj,data_ur,wiek) values ('Ragnar','wiking','1608.09.05',42);
 
 
 
+create table statek(nazwa_statku int primary key auto_increment,rodzaj_statku int,data_wodowania date,max_ladownosc int not null);
+
+insert into statek(rodzaj_statku,data_wodowania,max_ladownosc) values (1,'1647.05.21',4);
+
+insert into statek(rodzaj_statku,data_wodowania,max_ladownosc) values (2,'1644.08.15',3);
+
+alter table postac add collumn funkcja varchar(20);
+
+update postac set funkcja = 'kapitan' where nazwa='Bjorn';
+
+alter table postac add collumn statek int foreign key(statek) references statek(nazwa_statku);
+
+update postac set statek = 1 where nazwa='Bjorn';
+
+update postac set statek = 1 where nazwa='Drozd';
+
+update postac set statek = 1 where nazwa='Ivar';
+
+update postac set statek = 1 where nazwa='Ragnar';
+
+
+update postac set statek = 2 where nazwa='Hugin';
+
+update postac set statek = 2 where nazwa='Mugin';
+
+update postac set statek = 2 where nazwa='Bolvar';
+
+
+delete from izba where nazwa_izby='spizarnia'
+
+drop table izba;
