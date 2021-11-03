@@ -1,42 +1,3 @@
-ADERS -------- 213.184.8.36
-
-login: zaczekk
-has³o: Zaq12wsx!
-
----------------------------------------------------------------------------------------------
-
-LINUX
-
-pdw = gdzie jestem
-cd = przejdz do katalogu	| cd ~ do katalogu domowego
-ls = wyœwietl zawartosc katalogu	|	-l = longlist   -a
-mkdir = stworz katalog
-touch = stworz plik tekstowy
-nano = edytuj plik tekstowy
-cat = wypisz zawartoœæ pliku tekstowego
-passwd = zmiana has³a
-
-
-----------------------------------------------------------------------------------------------
-
-mysql -u zaczekk -p = uruchom mysql
-
-has³o mysql: kacper123#@!A
-
-
-
-
-show databases; = poka¿ bazy danych do których mam dostêp
-
-
-use nazwa_bazydanych =  wejdz do bazy danych
-show tables;
-
-create table pracownik(id_pracownika int primary key, imie varchar(50) not null default 'Kowalski', zarobki double(10,2),data_urodzenia date, stanowisko enum('manager','ksiegowa','sprzedawca','kasjer'));  === przyk³adowy create table
-
-insert into table_name (column1, column2, column3, ...) values (value1, value2, value3, ...);
-
--------------------------------------------------------------------------------------------
 1.
 
 create table postac (id_postaci int primary key auto_increment, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta'),data_ur date, wiek not null)
@@ -117,6 +78,6 @@ update postac set statek = 2 where nazwa='Mugin';
 update postac set statek = 2 where nazwa='Bolvar';
 
 
-delete from izba where nazwa_izby='spizarnia'
+delete from izba where nazwa_izby='spizarnia';
 
 drop table izba;
