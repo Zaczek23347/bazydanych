@@ -60,7 +60,9 @@ alter table postac add collumn funkcja varchar(20);
 
 update postac set funkcja = 'kapitan' where nazwa='Bjorn';
 
-alter table postac add collumn statek int foreign key(statek) references statek(nazwa_statku);
+alter table postac add statek int;
+
+alter table postac add foreign key(statek) references statek(nazwa_statku);
 
 update postac set statek = 1 where nazwa='Bjorn';
 
