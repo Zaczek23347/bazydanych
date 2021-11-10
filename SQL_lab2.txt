@@ -1,0 +1,27 @@
+1.
+delete postac where id_postaci=8;
+delete postac where id_postaci=5;
+
+show create table walizka;
+
+alter table walizka drop foreign key walizka_ibffk_1;
+alter table postac modify id_postaci int;
+alter table postac drop primary key;
+
+2.
+aler table postac add column pesel varchar(11) not null;
+update postac set pesel = '11111111111' where nazwa='Bjorn';
+	-||-
+
+alter table postac add primary key (pesel);
+alter table postac modify rodzaj enum('wiking','ptak','kobieta','syrena');
+insert into postac(id_postaci,nazwa,rodzaj,data_ur,wiek,pesel) values(8,'Gertruda Nieszczera','syrena','1656.07.12',20,'52316317312');
+
+3.
+
+update postac set statek = 1 where nazwa like '%a%';
+update statek set max_ladownosc=max_ladownosc*0.7 where data_wodowania between '1901.01.01' and '2000.01.01';
+alter table postac modify wiek int not null check (wiek<1000);
+
+4.
+insert into postac(id_postaci,nazwa,rodzaj,data_ur,wiek,pesel) values (9,'Loko','syrena','1100.01.01',900,'1111111120');
