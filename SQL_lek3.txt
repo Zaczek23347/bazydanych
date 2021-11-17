@@ -1,0 +1,19 @@
+1.
+create table kreatura like wikingowie.kreatura;
+select * from wikingowie.zasob;
+select * from wikingowie.zasob where rodzaj='jedzenie';
+
+ select wikingowie.zasob.idZasobu=(select wikingowie.kreatura.idKreatury
+    -> from wikingowie.kreatura
+    -> where wikingowie.kreatura.idKreatury=wikingowie.zasob.idZasobu),
+    -> wikingowie.zasob.ilosc
+    -> from wikingowie.zasob;
+
+select wikingowie.zasob.idZasobu=(select wikingowie.kreatura.idKreatury from wikingowie.kreatura where wikingowie.kreatura.idKreatury=5), wikingowie.zasob.ilosc from wikingowie.zasob;
+
+2.
+select * from wikingowie.kreatura where rodzaj!='wiedzma' and udzwig>50;
+select * from wikingowie.zasob where waga between 2 and 5;
+select * from wikingowie.kreatura where nazwa like '%or%' and udzwig between 30 and 70;
+
+3.
