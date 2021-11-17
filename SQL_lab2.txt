@@ -25,3 +25,31 @@ alter table postac modify wiek int not null check (wiek<1000);
 
 4.
 insert into postac(id_postaci,nazwa,rodzaj,data_ur,wiek,pesel) values (9,'Loko','syrena','1100.01.01',900,'1111111120');
+create table marynarz like postac;
+insert into marynarz select * from postac where statek is not null;
+alter table marynarz add foreign key(statek) references statek(nazwa_statku);
+
+5.
+update marynarz set statek=null where id_postaci=1;
+update marynarz set statek=null where id_postaci=2;
+update marynarz set statek=null where id_postaci=3;
+update marynarz set statek=null where id_postaci=4;
+update marynarz set statek=null where id_postaci=5;
+update marynarz set statek=null where id_postaci=6;
+update marynarz set statek=null where id_postaci=7;
+update marynarz set statek=null where id_postaci=8;
+delete from marynarz where nazwa='Hugin';
+delete from statek;
+drop table statek;
+create table zwierz(id_postaci int auto_increment primary key,nazwa varchar(50),wiek int);
+insert into zwierz(id_postaci,nazwa,wiek) values (3,'Drozd',2);
+insert into zwierz(id_postaci,nazwa,wiek) values (9,'Loko',1050);
+insert into zwierz(id_postaci,nazwa,wiek) values (8,'Loko',20);
+
+
+
+
+
+
+
+
