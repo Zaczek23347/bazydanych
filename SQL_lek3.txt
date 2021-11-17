@@ -17,3 +17,5 @@ select * from wikingowie.zasob where waga between 2 and 5;
 select * from wikingowie.kreatura where nazwa like '%or%' and udzwig between 30 and 70;
 
 3.
+select * from wikingowie.zasob where month(dataPozyskania) between 6 and 7;
+
