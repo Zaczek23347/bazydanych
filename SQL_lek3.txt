@@ -18,4 +18,15 @@ select * from wikingowie.kreatura where nazwa like '%or%' and udzwig between 30 
 
 3.
 select * from wikingowie.zasob where month(dataPozyskania) between 6 and 7;
+select * from wikingowie.zasob where rodzaj is not null order by waga asc;
+select * from wikingowie.kreatura order by dataUr asc limit 5;
 
+4.
+select distinct rodzaj from wikingowie.zasob;
+select concat(nazwa,' - ',rodzaj) as nazwa_rodzaj from wikingowie.kreatura where rodzaj like 'wi%';
+select ilosc * waga as calWaga from wikingowie.zasob where dataPozyskania between '2000,01,01' and '2007.01.01';
+
+5.
+select SUM(waga)*0.7 as waga_netto, SUM(waga)*0.3 as waga_odpadkow, SUM(waga) as waga_calkowita from wikingowie.zasob;
+select * from wikingowie.zasob where rodzaj is null;
+select distinct rodzaj from wikingowie.zasob where nazwa like '%os' or nazwa like 'ba%';
