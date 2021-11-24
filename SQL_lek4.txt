@@ -1,1 +1,20 @@
-wa
+1.
+select AVG(waga) from wikingowie.kreatura where rodzaj = 'wiking';
+select AVG(waga) as sr_waga, count(nazwa) as liczba_kr, rodzaj from wikingowie.kreatura group by rodzaj;
+select 1700-AVG(YEAR(dataUr)) from wikingowie.kreatura;
+
+2.
+select SUM(waga), rodzaj from wikingowie.zasob group by rodzaj;
+select AVG(waga), nazwa from wikingowie.zasob where ilosc>4 group by nazwa having AVG(waga)>10;
+select distinct nazwa from wikingowie.zasob group by nazwa having MIN(ilosc)>1;
+3.
+select nazwa, count(idZasobu) from wikingowie.kreatura inner join wikingowie.ekwipunek on wikingowie.ekwipunek.idKreatury = wikingowie.kreatura.idKreatury group by nazwa;
+
+select kreatura.nazwa,zasob.nazwa from wikingowie.ekwipunek  inner join wikingowie.kreatura on wikingowie.kreatura.idKreatury=wikingowie.ekwipunek.idKreatury  inner join wikingowie.zasob on wikingowie.zasob.idZasobu=wikingowie.ekwipunek.idZasobu;
+
+select nazwa, count(idZasobu) as ilosc from wikingowie.kreatura left join wikingowie.ekwipunek on wikingowie.ekwipunek.idKreatury = wikingowie.kreatura.idKreatury group by nazwa having ilosc=0;
+
+4.
+select kreatura.nazwa,zasob.nazwa from wikingowie.ekwipunek  inner join wikingowie.kreatura on wikingowie.kreatura.idKreatury=wikingowie.ekwipunek.idKreatury  inner join wikingowie.zasob on wikingowie.zasob.idZasobu=wikingowie.ekwipunek.idZasobu where YEAR(kreatura.dataUr) between 1671 and 1680;
+
+select kreatura.nazwa from wikingowie.ekwipunek  inner join wikingowie.kreatura on wikingowie.kreatura.idKreatury=wikingowie.ekwipunek.idKreatury  inner join wikingowie.zasob on wikingowie.zasob.idZasobu=wikingowie.ekwipunek.idZasobu where wikingowie.zasob.rodzaj='jedzenie' order by wikingowie.kreatura.dataUR desc limit 5;
