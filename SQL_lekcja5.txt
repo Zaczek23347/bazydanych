@@ -30,8 +30,13 @@ select kolejnosc, sektor, kreatura.nazwa from etapy_wyprawy inner join wyprawa o
 
 select sektor,IFNULL(COUNT(sektor),0) as ile from etapy_wyprawy group by sektor;
 
+3.2
+select kreatura.nazwa, case when id_uczestnika>0 then 'bral udzialu w wyprawie' else 'nie bral udzial w wyprawie' end as udzial from uczestnicy right join kreatura on uczestnicy.id_uczestnika=kreatura.idKreatury;
 
+4.1
+select wyprawa.nazwa as nazwa,SUM(LENGTH(dziennik)) as dlugosc from etapy_wyprawy inner join wyprawa on wyprawa.id_wyprawy=etapy_wyprawy.idwyprawy group by nazwa having dlugosc>400;
 
+4.2
 
 
 
