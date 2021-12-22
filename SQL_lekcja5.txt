@@ -37,9 +37,10 @@ select kreatura.nazwa, case when id_uczestnika>0 then 'bral udzialu w wyprawie' 
 select wyprawa.nazwa as nazwa,SUM(LENGTH(dziennik)) as dlugosc from etapy_wyprawy inner join wyprawa on wyprawa.id_wyprawy=etapy_wyprawy.idwyprawy group by nazwa having dlugosc>400;
 
 4.2
+select wyprawa.nazwa as nazwa,SUM(wikingowie.zasob.waga*wikingowie.ekwipunek.ilosc)/COUNT(uczestnicy.id_uczestnika) as waga from wyprawa inner join uczestnicy on wyprawa.id_wyprawy=uczestnicy.id_wyprawy inner join wikingowie.ekwipunek on uczestnicy.id_uczestnika=wikingowie.ekwipunek.idKreatury inner join wikingowie.zasob on wikingowie.ekwipunek.idZasobu=wikingowie.zasob.idZasobu group by nazwa;
 
-
-
+5.1
+select kreatura.nazwa as nazwa, DATEDIFF(kreatura.dataUr,'2021/12/22')*(-1) as datediff from kreatura inner join uczestnicy on kreatura.idKreatury=uczestnicy.id_uczestnika inner join wyprawa on uczestnicy.id_wyprawy=wyprawa.id_wyprawy inner join etapy_wyprawy on wyprawa.id_wyprawy=etapy_wyprawy.idWyprawy where etapy_wyprawy.sektor=7 group by nazwa,datediff;
 
 
 
